@@ -41,5 +41,5 @@ Use **save a backup** in the past tab now and then; **load a backup** adds the e
 
 ## Credits
 
-Typeface: [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type, under the SIL Open Font License (included in `public/fonts`).
+Typeface: [Fraunces](https://github.com/undercasetype/Fraunces) by The Fraunces Project Authors, under the SIL Open Font License (included in `public/fonts`).
 Built with plain HTML, CSS and JavaScript, with no dependencies.
