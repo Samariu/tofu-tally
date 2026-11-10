@@ -1,4 +1,4 @@
-# tofu
+# tofu tally
 
 A tiny risograph-style PWA for counting the blocks of tofu you eat.
 
@@ -14,7 +14,7 @@ Every push to `main` publishes `public/` via `.github/workflows/pages.yml`.
 
 One-time setup: the repo must be public (or on a paid plan), and under
 *Settings → Pages → Build and deployment → Source* choose **GitHub Actions**.
-The site then lives at `https://<user>.github.io/tofu_tracker/`.
+The site then lives at `https://<user>.github.io/tofu-tally/`.
 
 All paths in the app are relative, so it works under that subpath.
 

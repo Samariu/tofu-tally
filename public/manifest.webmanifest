@@ -1,6 +1,6 @@
 {
-  "name": "tofu",
-  "short_name": "tofu",
+  "name": "tofu tally",
+  "short_name": "tofu tally",
   "description": "A little printed diary of the tofu you eat.",
   "start_url": "./",
   "scope": "./",

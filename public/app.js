@@ -505,17 +505,17 @@
 
   document.getElementById('export').addEventListener('click', async () => {
     const payload = JSON.stringify({
-      app: 'tofu-tracker',
+      app: 'tofu-tally',
       version: 1,
       exportedAt: new Date().toISOString(),
       settings: state.settings,
       entries: state.entries,
     });
-    const name = `tofu-backup-${dayKey(new Date())}.json`;
+    const name = `tofu-tally-backup-${dayKey(new Date())}.json`;
     const file = new File([payload], name, { type: 'application/json' });
     try {
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], title: 'tofu backup' });
+        await navigator.share({ files: [file], title: 'tofu tally backup' });
         return;
       }
     } catch (err) {
