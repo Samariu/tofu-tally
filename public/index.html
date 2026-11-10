@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>tofu</title>
+  <meta name="description" content="A little printed diary of the tofu you eat.">
+  <meta name="theme-color" content="#f4efe4">
+  <meta name="color-scheme" content="light">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="tofu">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="preload" href="fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- shared print textures -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <pattern id="dots-blue" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+        <circle cx="3.5" cy="3.5" r="1.6" fill="#0078bf"/>
+      </pattern>
+      <pattern id="dots-pink" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-15)">
+        <circle cx="3" cy="3" r="1.5" fill="#ff48b0"/>
+      </pattern>
+      <pattern id="lines-blue" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="2.2" height="6" fill="#0078bf"/>
+      </pattern>
+    </defs>
+  </svg>
+
+  <main>
+    <!-- ───────── today ───────── -->
+    <section id="view-today" class="view" aria-label="today">
+      <p class="date" id="today-date"></p>
+
+      <div class="count" aria-live="polite">
+        <span class="count-num" id="today-count">0</span>
+        <span class="count-label" id="today-label">blocks today</span>
+      </div>
+
+      <button class="tofu tofu-big" data-q="4" aria-label="add a whole block">
+        <span class="tofu-art" data-shape="whole"></span>
+        <span class="tofu-cap">a whole block</span>
+      </button>
+
+      <div class="small-row">
+        <button class="tofu tofu-small" data-q="2" aria-label="add half a block">
+          <span class="tofu-art" data-shape="half"></span>
+          <span class="tofu-cap">½</span>
+        </button>
+        <button class="tofu tofu-small" data-q="1" aria-label="add a quarter block">
+          <span class="tofu-art" data-shape="quarter"></span>
+          <span class="tofu-cap">¼</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ───────── the past ───────── -->
+    <section id="view-past" class="view" aria-label="the past" hidden>
+      <div class="past-scroll">
+        <h1 class="past-title">the past</h1>
+
+        <div class="figures" id="figures"></div>
+
+        <div class="streaks" id="streaks"></div>
+
+        <div class="chart-block">
+          <div class="chart-head">
+            <h2 id="chart-title">blocks per week</h2>
+            <div class="seg" role="tablist" aria-label="period">
+              <button role="tab" data-period="week" aria-selected="true">weeks</button>
+              <button role="tab" data-period="month" aria-selected="false">months</button>
+            </div>
+          </div>
+          <div id="chart" class="chart"></div>
+        </div>
+
+        <div class="log-block">
+          <h2>the diary</h2>
+          <form class="add-past" id="add-past">
+            <label for="past-date">forgot a day?</label>
+            <div class="add-past-row">
+              <input type="date" id="past-date" required>
+              <div class="seg seg-amt">
+                <button type="button" data-q="1">¼</button>
+                <button type="button" data-q="2">½</button>
+                <button type="button" data-q="4">1</button>
+              </div>
+            </div>
+          </form>
+          <div id="log"></div>
+          <button class="more" id="log-more" hidden>older days</button>
+        </div>
+
+        <div class="settings">
+          <h2>odds &amp; ends</h2>
+          <label class="setting">
+            <span>one block weighs</span>
+            <span class="grams"><input type="number" id="grams" inputmode="numeric" min="50" max="2000" step="10"> g</span>
+          </label>
+          <div class="backup">
+            <button id="export">save a backup</button>
+            <label class="import-btn">
+              load a backup
+              <input type="file" id="import" accept="application/json,.json">
+            </label>
+          </div>
+          <p class="fineprint">Everything stays on this phone. Save a backup now and then.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" hidden>
+    <span id="toast-msg"></span>
+    <button id="toast-undo">undo</button>
+  </div>
+
+  <nav class="tabs" aria-label="pages">
+    <button data-view="today" aria-current="page">today</button>
+    <button data-view="past">the past</button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

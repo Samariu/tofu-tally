@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <pattern id="d" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(-15)">
+      <circle cx="11" cy="11" r="5" fill="#ff48b0"/>
+    </pattern>
+  </defs>
+  <rect width="512" height="512" fill="#f4efe4"/>
+  <g style="mix-blend-mode:multiply">
+    <path d="M110,206 L196,148 L408,150 L406,300 L322,362 L108,358 Z" fill="#ffe800"/>
+  </g>
+  <g transform="translate(9 6)" style="mix-blend-mode:multiply">
+    <path d="M322,206 L408,150 L406,300 L322,362 Z" fill="#ff48b0"/>
+    <path d="M110,206 L322,206 L322,362 L108,358 Z" fill="url(#d)" opacity=".75"/>
+  </g>
+  <g transform="translate(-4 -3)" fill="none" stroke="#0078bf" stroke-width="12" stroke-linejoin="round" stroke-linecap="round" style="mix-blend-mode:multiply">
+    <path d="M110,206 L196,148 L408,150 L406,300 L322,362 L108,358 Z"/>
+    <path d="M110,206 L322,206 L408,150 M322,206 L322,362"/>
+  </g>
+</svg>
