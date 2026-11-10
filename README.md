@@ -8,13 +8,15 @@ A tiny risograph-style PWA for counting the blocks of tofu you eat.
 Plain HTML/CSS/JS, no build step, no dependencies. Data is stored in `localStorage` on the device only.
 Font: [Fraunces](https://github.com/undercasetype/Fraunces) (SIL OFL, bundled in `public/fonts`).
 
-## Deploy on Netlify
+## Deploy (GitHub Pages)
 
-1. In Netlify: *Add new site → Import an existing project →* pick this repo.
-2. Leave the build command empty. The publish directory (`public`) comes from `netlify.toml`.
-3. Deploy.
+Every push to `main` publishes `public/` via `.github/workflows/pages.yml`.
 
-(Or drag the `public/` folder onto app.netlify.com/drop.)
+One-time setup: the repo must be public (or on a paid plan), and under
+*Settings → Pages → Build and deployment → Source* choose **GitHub Actions**.
+The site then lives at `https://<user>.github.io/tofu_tracker/`.
+
+All paths in the app are relative, so it works under that subpath.
 
 ## Install on the iPhone
 
