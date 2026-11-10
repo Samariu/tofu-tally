@@ -1,32 +1,45 @@
-# tofu
+# tofu tally
 
-A tiny risograph-style PWA for counting the blocks of tofu you eat.
+A small printed diary for the tofu you eat.
 
-- **today**: one big button for a whole block, two small ones for ½ and ¼, and today's count. Each tap shows an *undo* for 5 seconds.
-- **the past**: all-time / week / month totals, average per day, streaks, weekly or monthly bars (tap a bar for its value), a diary where you can change or delete entries or add a forgotten day, the weight of one block (used for the kg estimate), and backup export/import as JSON.
+Tap the big block when you finish a whole one, or the small ones for a half or a quarter. That's it.
+The look borrows from risograph prints: grainy paper, pink, blue and yellow inks, halftone dots.
 
-Plain HTML/CSS/JS, no build step, no dependencies. Data is stored in `localStorage` on the device only.
-Font: [Fraunces](https://github.com/undercasetype/Fraunces) (SIL OFL, bundled in `public/fonts`).
+**→ [samariu.github.io/tofu-tally](https://samariu.github.io/tofu-tally/)**
 
-## Deploy (GitHub Pages)
+## What's inside
 
-Every push to `main` publishes `public/` via `.github/workflows/pages.yml`.
+**today** shows the date, how much you've had today and three buttons: a whole block, ½ and ¼.
+Every tap gives you a few seconds to undo it.
 
-One-time setup: the repo must be public (or on a paid plan), and under
-*Settings → Pages → Build and deployment → Source* choose **GitHub Actions**.
-The site then lives at `https://<user>.github.io/tofu_tracker/`.
+**the past** is where the numbers live:
 
-All paths in the app are relative, so it works under that subpath.
+- totals for all time, this week and this month, plus a rough weight in kilos
+- your average per day and how many tofu days you've had
+- your current streak and your longest one
+- bars for the last 12 weeks or months (tap a bar to see its value)
+- a diary of every entry, where you can change an amount, delete it or add a day you forgot
+- the weight of one block, if yours isn't 200 g
+- backup and restore
 
 ## Install on the iPhone
 
-Open the site in **Safari** → Share → **Add to Home Screen**. Open it once while online; after that it works offline.
+Open the link in **Safari** → Share → **Add to Home Screen**.
+Open it once while you're online; after that it works without a connection.
 
-## Develop
+## Updates
 
-```sh
-cd public && python3 -m http.server 8000
-```
+The app updates itself. A new version is downloaded quietly in the background and shows up the next time you open the app.
 
-When you change the list of files in `public/`, update `ASSETS` and bump `VERSION` in `public/sw.js`.
-Changes to existing files are picked up automatically on the next launch after the one that downloads them (stale-while-revalidate).
+For changes to the code: when you add or remove a file in `public/`, update `ASSETS` and bump `VERSION` in `public/sw.js`. Changes to existing files are picked up without that.
+
+## Your data
+
+Everything stays on your phone. There's no account, no server and no tracking.
+That also means no automatic backup. If you clear Safari's website data or delete the home-screen icon, your history can disappear.
+Use **save a backup** in the past tab now and then; **load a backup** adds the entries back.
+
+## Credits
+
+Typeface: [Fraunces](https://github.com/undercasetype/Fraunces) by The Fraunces Project Authors, under the SIL Open Font License (included in `public/fonts`).
+Built with plain HTML, CSS and JavaScript, with no dependencies.

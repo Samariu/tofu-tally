@@ -1,7 +1,7 @@
 // Offline support: precache the app shell, then serve from cache and
 // refresh it in the background (stale-while-revalidate).
 // Bump VERSION when the precache list changes.
-const VERSION = 'tofu-v1';
+const VERSION = 'tofu-tally-v2';
 const ASSETS = [
   './',
   './index.html',
