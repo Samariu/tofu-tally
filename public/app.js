@@ -189,7 +189,12 @@
       .toLowerCase();
   }
 
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   function fly(btn, text) {
+    // With Reduce Motion on, animations are disabled, so 'animationend' never
+    // fires and the label would stay on screen forever. Skip it entirely.
+    if (reducedMotion.matches) return;
     const r = btn.getBoundingClientRect();
     const el = document.createElement('div');
     el.className = 'fly';
@@ -198,6 +203,7 @@
     el.style.top = r.top + r.height * 0.25 + 'px';
     document.body.appendChild(el);
     el.addEventListener('animationend', () => el.remove());
+    setTimeout(() => el.remove(), 1200); // safety net if the animation never runs
   }
 
   document.querySelectorAll('#view-today .tofu').forEach((btn) => {
@@ -569,6 +575,7 @@
   function show(name) {
     if (!views[name]) name = 'today';
     current = name;
+    document.querySelectorAll('.fly').forEach((el) => el.remove());
     for (const [k, el] of Object.entries(views)) el.hidden = k !== name;
     document.querySelectorAll('.tabs button').forEach((b) => {
       if (b.dataset.view === name) b.setAttribute('aria-current', 'page');
